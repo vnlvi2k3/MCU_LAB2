@@ -229,28 +229,28 @@ void clearAllMatrix(){
 }
 void updateCols(uint8_t code){
 	if((code >> 0) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[0], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(0+shift)%8], RESET);
 	}
 	if((code >> 1) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[1], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(1+shift)%8], RESET);
 	}
 	if((code >> 2) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[2], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(2+shift)%8], RESET);
 	}
 	if((code >> 3) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[3], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(3+shift)%8], RESET);
 	}
 	if((code >> 4) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[4], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(4+shift)%8], RESET);
 	}
 	if((code >> 5) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[5], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(5+shift)%8], RESET);
 	}
 	if((code >> 6) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[6], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(6+shift)%8], RESET);
 	}
 	if((code >> 7) & 1){
-		HAL_GPIO_WritePin(GPIOA, cols[7], RESET);
+		HAL_GPIO_WritePin(GPIOA, cols[(7+shift)%8], RESET);
 	}
 }
 void updateLEDMatrix(int index){
@@ -364,11 +364,11 @@ clearAllMatrix();
 		  if(index_led_matrix >= MAX_LED_MATRIX) index_led_matrix = 0;
 		  updateLEDMatrix(index_led_matrix++);
 	  }
-//	  if(timer4_flag == 1){
-//		  setTimer4(80);
-//		  shift++;
-//		  if(shift >= MAX_LED_MATRIX) shift = 0;
-//	  }
+	  if(timer4_flag == 1){
+		  setTimer4(80);
+		  shift++;
+		  if(shift >= MAX_LED_MATRIX) shift = 0;
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
